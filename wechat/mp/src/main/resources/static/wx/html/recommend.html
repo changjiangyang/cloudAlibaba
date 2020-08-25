@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的推荐</title>
+	<link rel="stylesheet" type="text/css" href="../css/recommend.css" />
+</head>
+<body>
+	<div style="height: 8rem;">
+		<div style="width: 100%;margin-top: 0px;margin-left: 0px;
+		z-index: 2;background-color: white;height: 8rem;padding-left: 1rem;" onclick="back()">
+			<img src="../img/back.png" style="height: 3rem;padding-top: 2.8rem;"/>
+		</div>
+		<p style="text-align: center;font-size: 3rem;position: absolute;top: 2rem;width: 80%;margin-left:10%;margin-bottom: 10px;margin-top: 0px;">邀请列表</label>
+	</div>
+    <div class="hand">
+        <ul>
+            <li class="activity" onclick="changepage(this)" id = "pagelist" >邀请人列表</li>
+            <li onclick="changepage(this)" id = "orderlist">邀请人订单</li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="tuijian">
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="userid"><span>会员ID:</span><span>123456789</span></div>
+				<div class="nickname"><span>昵称:</span><span>爱心天使</span></div>
+				<div class="addtime"><span>注册时间:</span><span>2020-05-05 15:00:00</span></div>
+			</div>
+		</div>
+        <div class="order">
+			<div class="item">
+				<div class="jine"><span>订单金额:</span><span>￥52</span></div>
+				<div class="status"><span>订单状态:</span><span>已支付</span></div>
+				<div class="proname"><span>商品名称:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderid"><span>订单编号:</span><span>123456789</span></div>
+				<div class="ordername"><span>预定人:</span><span>测试</span></div>
+				<div class="orderaddress"><span>地址:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderphone"><span>电话:</span><span>12345678100</span></div>
+				<div class="number"><span>数量:</span><span></span>11</div>
+				<div class="yongjin"><span>佣金:</span><span>￥5.2</span></div>
+				<div class="time"><span>时间:</span><span>2020-05-06 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="jine"><span>订单金额:</span><span>￥52</span></div>
+				<div class="status"><span>订单状态:</span><span>已支付</span></div>
+				<div class="proname"><span>商品名称:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderid"><span>订单编号:</span><span>123456789</span></div>
+				<div class="ordername"><span>预定人:</span><span>测试</span></div>
+				<div class="orderaddress"><span>地址:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderphone"><span>电话:</span><span>12345678100</span></div>
+				<div class="number"><span>数量:</span><span></span>11</div>
+				<div class="yongjin"><span>佣金:</span><span>￥5.2</span></div>
+				<div class="time"><span>时间:</span><span>2020-05-06 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="jine"><span>订单金额:</span><span>￥52</span></div>
+				<div class="status"><span>订单状态:</span><span>已支付</span></div>
+				<div class="proname"><span>商品名称:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderid"><span>订单编号:</span><span>123456789</span></div>
+				<div class="ordername"><span>预定人:</span><span>测试</span></div>
+				<div class="orderaddress"><span>地址:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderphone"><span>电话:</span><span>12345678100</span></div>
+				<div class="number"><span>数量:</span><span></span>11</div>
+				<div class="yongjin"><span>佣金:</span><span>￥5.2</span></div>
+				<div class="time"><span>时间:</span><span>2020-05-06 15:00:00</span></div>
+			</div>
+			<div class="item">
+				<div class="jine"><span>订单金额:</span><span>￥52</span></div>
+				<div class="status"><span>订单状态:</span><span>已支付</span></div>
+				<div class="proname"><span>商品名称:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderid"><span>订单编号:</span><span>123456789</span></div>
+				<div class="ordername"><span>预定人:</span><span>测试</span></div>
+				<div class="orderaddress"><span>地址:</span><span>测试测试测试测试测试测试测试测试测试测试测试测试测试</span></div>
+				<div class="orderphone"><span>电话:</span><span>12345678100</span></div>
+				<div class="number"><span>数量:</span><span></span>11</div>
+				<div class="yongjin"><span>佣金:</span><span>￥5.2</span></div>
+				<div class="time"><span>时间:</span><span>2020-05-06 15:00:00</span></div>
+			</div>
+		</div>
+    </div>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script>
+	function changepage(obj){
+		var li=$(obj);
+		for(var t=0;t<li.length;t++){
+			$(".hand li").removeClass("activity")
+		}
+		$(obj).addClass("activity")
+		var id=$(obj).attr("id")
+		console.log(id)
+		if(id=="orderlist"){
+			$(".tuijian").css("display","none");
+			$(".order").css("display","block");
+		}else{
+			$(".tuijian").css("display","block");
+			$(".order").css("display","none");
+		}
+	}
+	
+	function back(){
+		window.history.go(-1)
+	}
+</script>
+</body>
+</html>

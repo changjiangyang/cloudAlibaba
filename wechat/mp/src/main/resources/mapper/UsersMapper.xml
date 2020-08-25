@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.mp.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.hltx.mp.beans.Users">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="usernick" jdbcType="VARCHAR" property="usernick" />
+    <result column="sex" property="sex"/>
+    <result column="handimg" property="handimg" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="logname" jdbcType="VARCHAR" property="logname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="unid" jdbcType="VARCHAR" property="unid" />
+    <result column="qrcode" jdbcType="VARCHAR" property="qrcode" />
+    <result column="usertype" jdbcType="INTEGER" property="usertype" />
+    <result column="superid1" jdbcType="VARCHAR" property="superid1" />
+    <result column="superid2" jdbcType="VARCHAR" property="superid2" />
+    <result column="superid3" jdbcType="VARCHAR" property="superid3" />
+    <result column="supername1" jdbcType="VARCHAR" property="supername1" />
+    <result column="supername2" jdbcType="VARCHAR" property="supername2" />
+    <result column="supername3" jdbcType="VARCHAR" property="supername3" />
+    <result column="addresss" jdbcType="VARCHAR" property="addresss" />
+  </resultMap>
+  <sql id="basesql">
+    id,usernick,openid,phone,addtime,logname,password,unid,qrcode,usertype,superid1,superid2,superid3,
+    supername1,supername2,supername3,addresss,sex,handimg
+  </sql>
+
+  <update id="updateQrcode" parameterType="java.lang.String">
+   update users set qrcode = #{imgpath} where openid = #{openid}
+  </update>
+
+  <select id="getUsersByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="basesql" /> from users where openid= #{openid}
+  </select>
+
+  <select id="getCount" resultType="java.lang.Integer">
+    select count(id) from users
+  </select>
+
+  <insert id="insert" parameterType="com.hltx.mp.beans.Users">
+    insert into users (id, usernick, openid, 
+      phone, addtime, logname, 
+      password, unid, qrcode, 
+      usertype, superid1, superid2, 
+      superid3, supername1, supername2, 
+      supername3, addresss)
+    values (#{id,jdbcType=VARCHAR}, #{usernick,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP}, #{logname,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{unid,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, 
+      #{usertype,jdbcType=INTEGER}, #{superid1,jdbcType=VARCHAR}, #{superid2,jdbcType=VARCHAR}, 
+      #{superid3,jdbcType=VARCHAR}, #{supername1,jdbcType=VARCHAR}, #{supername2,jdbcType=VARCHAR}, 
+      #{supername3,jdbcType=VARCHAR}, #{addresss,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hltx.mp.beans.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="usernick != null">
+        usernick,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="logname != null">
+        logname,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="unid != null">
+        unid,
+      </if>
+      <if test="qrcode != null">
+        qrcode,
+      </if>
+      <if test="usertype != null">
+        usertype,
+      </if>
+      <if test="superid1 != null">
+        superid1,
+      </if>
+      <if test="superid2 != null">
+        superid2,
+      </if>
+      <if test="superid3 != null">
+        superid3,
+      </if>
+      <if test="supername1 != null">
+        supername1,
+      </if>
+      <if test="supername2 != null">
+        supername2,
+      </if>
+      <if test="supername3 != null">
+        supername3,
+      </if>
+      <if test="addresss != null">
+        addresss,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="usernick != null">
+        #{usernick,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logname != null">
+        #{logname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="unid != null">
+        #{unid,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="superid1 != null">
+        #{superid1,jdbcType=VARCHAR},
+      </if>
+      <if test="superid2 != null">
+        #{superid2,jdbcType=VARCHAR},
+      </if>
+      <if test="superid3 != null">
+        #{superid3,jdbcType=VARCHAR},
+      </if>
+      <if test="supername1 != null">
+        #{supername1,jdbcType=VARCHAR},
+      </if>
+      <if test="supername2 != null">
+        #{supername2,jdbcType=VARCHAR},
+      </if>
+      <if test="supername3 != null">
+        #{supername3,jdbcType=VARCHAR},
+      </if>
+      <if test="addresss != null">
+        #{addresss,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateUsers" parameterType="com.hltx.mp.beans.Users">
+    update users set
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="usernick != null">
+        usernick = #{usernick,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logname != null">
+        logname = #{logname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="unid != null">
+        unid = #{unid,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null">
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="usertype != null">
+        usertype = #{usertype,jdbcType=INTEGER},
+      </if>
+      <if test="superid1 != null">
+        superid1 = #{superid1,jdbcType=VARCHAR},
+      </if>
+      <if test="superid2 != null">
+        superid2 = #{superid2,jdbcType=VARCHAR},
+      </if>
+      <if test="superid3 != null">
+        superid3 = #{superid3,jdbcType=VARCHAR},
+      </if>
+      <if test="supername1 != null">
+        supername1 = #{supername1,jdbcType=VARCHAR},
+      </if>
+      <if test="supername2 != null">
+        supername2 = #{supername2,jdbcType=VARCHAR},
+      </if>
+      <if test="supername3 != null">
+        supername3 = #{supername3,jdbcType=VARCHAR},
+      </if>
+      <if test="addresss != null">
+        addresss = #{addresss,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex},
+      </if>
+      <if test="handimg != null" >
+        handimg= #{handimg},
+      </if>
+    </trim>
+    where openid = #{openid}
+  </update>
+
+  <select id="getUsersPage" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="basesql" /> from users order by addtime desc limit #{index},#{pagesize}
+  </select>
+
+  <select id="getMytuijian" parameterType="java.lang.String">
+    select <include refid="basesql" /> from users where superid1 = #{openid} order by addtime desc
+  </select>
+</mapper>

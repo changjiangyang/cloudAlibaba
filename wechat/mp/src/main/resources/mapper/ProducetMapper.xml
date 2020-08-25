@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.mp.mapper.ProducetMapper">
+  <resultMap id="BaseResultMap" type="com.hltx.mp.beans.Producet">
+    <id column="pro_id" jdbcType="VARCHAR" property="proId" />
+    <result column="pro_name" jdbcType="VARCHAR" property="proName" />
+    <result column="pro_price" jdbcType="DECIMAL" property="proPrice" />
+    <result column="pro_number" jdbcType="INTEGER" property="proNumber" />
+    <result column="pro_addtime" jdbcType="TIMESTAMP" property="proAddtime" />
+    <result column="pro_adduser" jdbcType="VARCHAR" property="proAdduser" />
+    <result column="pro_commission1" jdbcType="DECIMAL" property="proCommission1" />
+    <result column="pro_commission2" jdbcType="DECIMAL" property="proCommission2" />
+    <result column="pro_commission3" jdbcType="DECIMAL" property="proCommission3" />
+    <result column="pro_integral" jdbcType="INTEGER" property="proIntegral" />
+    <result column="pro_integral2" jdbcType="INTEGER" property="proIntegral2" />
+    <result column="pro_integral3" jdbcType="INTEGER" property="proIntegral3" />
+    <result column="pro_status" jdbcType="INTEGER" property="proStatus" />
+    <result column="pro_recommended" jdbcType="INTEGER" property="proRecommended" />
+    <result column="pro_img" jdbcType="VARCHAR" property="proImg" />
+    <result column="pro_thumbnail" jdbcType="VARCHAR" property="proThumbnail" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.hltx.mp.beans.Producet">
+    <result column="pro_describe" jdbcType="LONGVARCHAR" property="proDescribe" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pro_id, pro_name, pro_price, pro_number, pro_addtime, pro_adduser, pro_commission1, 
+    pro_commission2, pro_commission3, pro_integral, pro_integral2, pro_integral3, pro_status, 
+    pro_recommended, pro_img, pro_thumbnail
+  </sql>
+  <sql id="Blob_Column_List">
+    pro_describe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from producet
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from producet
+    where pro_id = #{proId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hltx.mp.beans.Producet">
+    insert into producet (pro_id, pro_name, pro_price, 
+      pro_number, pro_addtime, pro_adduser, 
+      pro_commission1, pro_commission2, pro_commission3, 
+      pro_integral, pro_integral2, pro_integral3, 
+      pro_status, pro_recommended, pro_img, 
+      pro_thumbnail, pro_describe)
+    values (#{proId,jdbcType=VARCHAR}, #{proName,jdbcType=VARCHAR}, #{proPrice,jdbcType=DECIMAL},
+      #{proNumber,jdbcType=INTEGER}, #{proAddtime,jdbcType=TIMESTAMP}, #{proAdduser,jdbcType=VARCHAR}, 
+      #{proCommission1,jdbcType=DECIMAL}, #{proCommission2,jdbcType=DECIMAL}, #{proCommission3,jdbcType=DECIMAL}, 
+      #{proIntegral,jdbcType=INTEGER}, #{proIntegral2,jdbcType=INTEGER}, #{proIntegral3,jdbcType=INTEGER}, 
+      #{proStatus,jdbcType=INTEGER}, #{proRecommended,jdbcType=INTEGER}, #{proImg,jdbcType=VARCHAR}, 
+      #{proThumbnail,jdbcType=VARCHAR}, #{proDescribe,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hltx.mp.beans.Producet">
+    insert into producet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        pro_id,
+      </if>
+      <if test="proName != null">
+        pro_name,
+      </if>
+      <if test="proPrice != null">
+        pro_price,
+      </if>
+      <if test="proNumber != null">
+        pro_number,
+      </if>
+      <if test="proAddtime != null">
+        pro_addtime,
+      </if>
+      <if test="proAdduser != null">
+        pro_adduser,
+      </if>
+      <if test="proCommission1 != null">
+        pro_commission1,
+      </if>
+      <if test="proCommission2 != null">
+        pro_commission2,
+      </if>
+      <if test="proCommission3 != null">
+        pro_commission3,
+      </if>
+      <if test="proIntegral != null">
+        pro_integral,
+      </if>
+      <if test="proIntegral2 != null">
+        pro_integral2,
+      </if>
+      <if test="proIntegral3 != null">
+        pro_integral3,
+      </if>
+      <if test="proStatus != null">
+        pro_status,
+      </if>
+      <if test="proRecommended != null">
+        pro_recommended,
+      </if>
+      <if test="proImg != null">
+        pro_img,
+      </if>
+      <if test="proThumbnail != null">
+        pro_thumbnail,
+      </if>
+      <if test="proDescribe != null">
+        pro_describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proId != null">
+        #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="proName != null">
+        #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proPrice != null">
+        #{proPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="proNumber != null">
+        #{proNumber,jdbcType=INTEGER},
+      </if>
+      <if test="proAddtime != null">
+        #{proAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proAdduser != null">
+        #{proAdduser,jdbcType=VARCHAR},
+      </if>
+      <if test="proCommission1 != null">
+        #{proCommission1,jdbcType=DECIMAL},
+      </if>
+      <if test="proCommission2 != null">
+        #{proCommission2,jdbcType=DECIMAL},
+      </if>
+      <if test="proCommission3 != null">
+        #{proCommission3,jdbcType=DECIMAL},
+      </if>
+      <if test="proIntegral != null">
+        #{proIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="proIntegral2 != null">
+        #{proIntegral2,jdbcType=INTEGER},
+      </if>
+      <if test="proIntegral3 != null">
+        #{proIntegral3,jdbcType=INTEGER},
+      </if>
+      <if test="proStatus != null">
+        #{proStatus,jdbcType=INTEGER},
+      </if>
+      <if test="proRecommended != null">
+        #{proRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="proImg != null">
+        #{proImg,jdbcType=VARCHAR},
+      </if>
+      <if test="proThumbnail != null">
+        #{proThumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="proDescribe != null">
+        #{proDescribe,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hltx.mp.beans.Producet">
+    update producet
+    <set>
+      <if test="proName != null">
+        pro_name = #{proName,jdbcType=VARCHAR},
+      </if>
+      <if test="proPrice != null">
+        pro_price = #{proPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="proNumber != null">
+        pro_number = #{proNumber,jdbcType=INTEGER},
+      </if>
+      <if test="proAddtime != null">
+        pro_addtime = #{proAddtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proAdduser != null">
+        pro_adduser = #{proAdduser,jdbcType=VARCHAR},
+      </if>
+      <if test="proCommission1 != null">
+        pro_commission1 = #{proCommission1,jdbcType=DECIMAL},
+      </if>
+      <if test="proCommission2 != null">
+        pro_commission2 = #{proCommission2,jdbcType=DECIMAL},
+      </if>
+      <if test="proCommission3 != null">
+        pro_commission3 = #{proCommission3,jdbcType=DECIMAL},
+      </if>
+      <if test="proIntegral != null">
+        pro_integral = #{proIntegral,jdbcType=INTEGER},
+      </if>
+      <if test="proIntegral2 != null">
+        pro_integral2 = #{proIntegral2,jdbcType=INTEGER},
+      </if>
+      <if test="proIntegral3 != null">
+        pro_integral3 = #{proIntegral3,jdbcType=INTEGER},
+      </if>
+      <if test="proStatus != null">
+        pro_status = #{proStatus,jdbcType=INTEGER},
+      </if>
+      <if test="proRecommended != null">
+        pro_recommended = #{proRecommended,jdbcType=INTEGER},
+      </if>
+      <if test="proImg != null">
+        pro_img = #{proImg,jdbcType=VARCHAR},
+      </if>
+      <if test="proThumbnail != null">
+        pro_thumbnail = #{proThumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="proDescribe != null">
+        pro_describe = #{proDescribe,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pro_id = #{proId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hltx.mp.beans.Producet">
+    update producet
+    set pro_name = #{proName,jdbcType=VARCHAR},
+      pro_price = #{proPrice,jdbcType=DECIMAL},
+      pro_number = #{proNumber,jdbcType=INTEGER},
+      pro_addtime = #{proAddtime,jdbcType=TIMESTAMP},
+      pro_adduser = #{proAdduser,jdbcType=VARCHAR},
+      pro_commission1 = #{proCommission1,jdbcType=DECIMAL},
+      pro_commission2 = #{proCommission2,jdbcType=DECIMAL},
+      pro_commission3 = #{proCommission3,jdbcType=DECIMAL},
+      pro_integral = #{proIntegral,jdbcType=INTEGER},
+      pro_integral2 = #{proIntegral2,jdbcType=INTEGER},
+      pro_integral3 = #{proIntegral3,jdbcType=INTEGER},
+      pro_status = #{proStatus,jdbcType=INTEGER},
+      pro_recommended = #{proRecommended,jdbcType=INTEGER},
+      pro_img = #{proImg,jdbcType=VARCHAR},
+      pro_thumbnail = #{proThumbnail,jdbcType=VARCHAR},
+      pro_describe = #{proDescribe,jdbcType=LONGVARCHAR}
+    where pro_id = #{proId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hltx.mp.beans.Producet">
+    update producet
+    set pro_name = #{proName,jdbcType=VARCHAR},
+      pro_price = #{proPrice,jdbcType=DECIMAL},
+      pro_number = #{proNumber,jdbcType=INTEGER},
+      pro_addtime = #{proAddtime,jdbcType=TIMESTAMP},
+      pro_adduser = #{proAdduser,jdbcType=VARCHAR},
+      pro_commission1 = #{proCommission1,jdbcType=DECIMAL},
+      pro_commission2 = #{proCommission2,jdbcType=DECIMAL},
+      pro_commission3 = #{proCommission3,jdbcType=DECIMAL},
+      pro_integral = #{proIntegral,jdbcType=INTEGER},
+      pro_integral2 = #{proIntegral2,jdbcType=INTEGER},
+      pro_integral3 = #{proIntegral3,jdbcType=INTEGER},
+      pro_status = #{proStatus,jdbcType=INTEGER},
+      pro_recommended = #{proRecommended,jdbcType=INTEGER},
+      pro_img = #{proImg,jdbcType=VARCHAR},
+      pro_thumbnail = #{proThumbnail,jdbcType=VARCHAR}
+    where pro_id = #{proId,jdbcType=VARCHAR}
+  </update>
+  <select id="getCount" resultType="java.lang.Integer" >
+    select count(id) from producet where pro_status = 1
+  </select>
+
+  <select id="getByPage" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select <include refid="Blob_Column_List" /> from producet
+    where pro_status = 1 order by pro_recommended,pro_addtime desc limit #{index},#{pagesize}
+  </select>
+</mapper>

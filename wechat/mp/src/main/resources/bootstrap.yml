@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      # 读取配置
+      config:
+        server-addr: 192.168.101.111:8848 #注册中心地址
+        namespace: f4b07238-35a2-409b-b666-687dd9d0e905
+        file-extension: yaml
+        prefix: wechatmp
+      # 注册服务
+      discovery:
+        #server-addr: 192.168.101.111:8848,127.0.0.1:8847,192.168.0.178:8848
+        server-addr: 192.168.101.111:8848
+        namespace: f4b07238-35a2-409b-b666-687dd9d0e905
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://192.168.0.178:3306/hltxcloud?characterEncoding=UTF-8&useUnicode=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

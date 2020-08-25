@@ -1,0 +1,66 @@
+.mine{
+	width: 100%;
+	height: 100%;
+}
+.mine .background{
+	width: 100%;
+	height: 8rem;
+}
+.mine .background img{
+	width: 100%;
+	height: 100%;
+}
+.handimg{
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    color: white;
+	width: 12rem;
+}
+.handimg img{
+	width: 3rem;
+	height: 3rem;
+	background-color: #FFFFFF;
+	border-radius: 1.5rem;
+	
+}
+.fuli{
+	position: absolute;
+	top: 4rem;
+	color: white;
+	left: 1rem;
+}
+.fuli p{
+	line-height: 0.8rem;
+}
+
+.fuli :first-child{
+	margin-top: 5px;
+}
+ul{
+	width: 100%;
+	padding: 0;
+}
+ul li{
+	text-align: center;
+	width: 30%;
+	height: 3rem ;
+	float: left;
+	margin: 1%;
+	list-style: none;
+	margin-bottom: 1rem;
+}
+ul li img{
+	width: 50%;
+	height: 2rem;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+.myshare ,.myorder{
+	margin-top: 1rem;
+	margin-left: 1rem;
+}
+a {
+	text-decoration:none;
+	color: #444444;
+}

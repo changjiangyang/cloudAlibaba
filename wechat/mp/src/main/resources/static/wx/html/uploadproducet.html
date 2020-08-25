@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Summernote</title>
+  <link href="../js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../js/summernote/summernote.min.css" rel="stylesheet">
+  <link href="../layui/css/layui.css" rel="stylesheet" />
+  <style>
+	  .bottom button{
+		  width: 49%;
+		  height: 6rem;
+		  font-size: 2rem;
+	  }
+	  .btn-sm{
+		  height: 4rem;
+		  width: 4rem;
+		  font-size: 1.5rem;
+	  }
+	  .show{
+		  font-size: 3rem;
+	  }
+	  .panel-default{
+		  margin-bottom: 7rem;
+	  }
+  </style>
+</head>
+<body>
+	<div style="height: 8rem;">
+		<div style="width: 100%;margin-top: 0px;margin-left: 0px;
+		z-index: 2;background-color: white;height: 8rem;padding-left: 1rem;" onclick="back()">
+			<img src="../img/back.png" style="height: 3rem;position: absolute;top: 3rem;"/>
+		</div>
+		<p style="text-align: center;font-size: 3rem;position: absolute;top: 2rem;width: 80%;margin-left:10%;margin-bottom: 10px;margin-top: 0px;">商品列表</label>
+	</div>
+	<div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">名称：</label>
+			<div class="layui-input-block">
+			  <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">数量：</label>
+			<div class="layui-input-block">
+			  <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">价格：</label>
+		    <div class="layui-input-block">
+		      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">库存：</label>
+			<div class="layui-input-block">
+			  <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			    <label class="layui-form-label">分享奖励：</label>
+			    <div class="layui-input-block">
+			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+			    </div>
+		</div>
+		<div class="layui-upload" style="margin-left: 1.5rem">
+		  <button type="button" class="layui-btn" id="test1">商品图片</button>
+		  <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+		     预览图：
+		     <div class="layui-upload-list" id="demo2"></div>
+		  </blockquote>
+		</div> 
+		<!-- <div id="summernote"></div> -->
+		<div class="bottom" style="position: fixed;bottom: 0;width: 100%;">
+			<button type="button" class="layui-btn layui-btn-lg">大型按钮</button>
+			<button type="button" class="layui-btn layui-btn-primary layui-btn-lg">大型按钮</button>
+		</dir>
+		  
+	</div>
+	
+  <script src="../js/jquery-3.1.1.min.js"></script>
+  <script src="../js/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/summernote/summernote.min.js"></script>
+  <script src="../layui/layui.js"></script>
+  <script>
+    $(document).ready(function() {
+		 $("#summernote").summernote({
+		             lang : 'zh-CN',// 语言
+		            height : 496, // 高度
+		            minHeight : 300, // 最小高度
+		            placeholder : '请输入文章内容', // 提示       
+		            // summernote自定义配置
+		            toolbar: [
+		              ['operate', ['undo','redo']],
+		              ['magic',['style']],
+		              ['style', ['bold', 'italic', 'underline', 'clear']],
+		              ['para', ['height','fontsize','ul', 'ol', 'paragraph']],
+		              ['font', ['strikethrough', 'superscript', 'subscript']],
+		              ['color', ['color']],
+		              ['insert',['picture','video','link','table','hr']],
+		              ['layout',['fullscreen','codeview']],
+		            ],
+		            callbacks : { // 回调函数
+		                // 上传图片时使用的回调函数   因为我们input选择的本地图片是二进制图片，需要把二进制图片上传服务器，服务器再返回图片url，就需要用到callback这个回调函数
+		                onImageUpload : function(files) { 
+		                    var form=new FormData();
+		                        form.append('file',files[0])  //myFileName 是上传的参数名，一定不能写错
+		                    $.ajax({
+		                        type:"post",
+		                        url:"http://192.168.101.12:8105/producet/uploadImg", //上传服务器地址
+		                        dataType:'json',
+		                        data:form,
+		                        processData : false,
+		                           contentType : false,
+		                           cache : false,
+		                           success:function(data){
+		                            console.log(data.data)                            
+		                              $('#summernote').summernote('editor.insertImage',"http://192.168.101.12:8105/img/"+data.data);
+		                           },
+								   
+		                    })
+		                }
+		            }
+		        });
+    });
+	function back(){
+		window.history.go(-1)
+	}
+	layui.use('upload', function(){
+		var upload = layui.upload;
+		  
+		  //普通图片上传
+		  upload.render({
+		    elem: '#test1'
+		    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+		    ,multiple: true
+		    ,before: function(obj){
+		      //预读本地文件示例，不支持ie8
+		      obj.preview(function(index, file, result){
+		        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+		      });
+		    }
+		    ,done: function(res){
+		      //上传完毕
+		    }
+		  });
+	})
+  </script>
+</body>
+</html>

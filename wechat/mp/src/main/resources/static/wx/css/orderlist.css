@@ -1,0 +1,64 @@
+
+.item{
+	height: 16rem;
+	width: 100%;
+	margin: 0.5rem;
+}
+.left{
+	height: 100%;
+	width: 40%;
+	float: left;
+}
+
+.left img{
+	width: 100%;
+	height: 100%;
+}
+
+.rigth{
+	float: left;
+	width: 55%;
+	margin-left: 5px;
+	font-size: 2.5rem;
+}
+.rigth .title{
+	word-wrap:break-word;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	height: 6.8rem;
+	line-height: 1.4;
+}
+.price{
+	color: red;
+	float: left;
+	margin-top: 1.2rem;
+}
+.yongjin{
+	margin-top: 1.2rem;
+}
+.more{
+	height: 2rem;
+	margin-left: 0.5rem;
+}
+.qiangou{
+	float: right;
+	position: relative;
+	width: 15rem;
+	text-align: center;
+	background: red;
+	height: 3.5rem;
+	color: white;
+	border-radius: 10px;
+}
+.more div{
+	float: left;
+	height: 2rem;
+	padding-top: 10px;
+}
+.more :last-child{
+	position: relative;
+    float: right;
+}
+

@@ -1,0 +1,57 @@
+html body{
+	margin: 0;
+	padding: 0;
+	background-color: #F6F6F6;
+}
+.hand {
+	background: white;
+	width: 100%;
+}
+.hand li {
+	list-style: none;
+	height: 5rem;
+	width: 48%;
+	float: left;
+	text-align: center;
+	font-size: 2.5rem;
+	background: white;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.hand ul{
+	background: white;
+	height: 6rem;
+}
+.hand .activity{
+	border-bottom: 5px solid #007AFF;
+}
+
+.main{
+	margin-top: 1rem;
+}
+
+.main .tuijian{
+	margin-top: 1rem;
+	padding-top: 0.5rem;
+}
+.main .tuijian .item,.main .order .item{
+	background: white;
+	margin: 0 0 1rem 1rem;
+	padding: 1rem 2rem;
+	border-radius: 1rem;
+}
+.main .tuijian .item> :first-child{
+	font-weight: 600;
+}
+.main .order{
+	display: none;
+	
+}
+.main .order .item .yongjin span:last-child,.main .order .item .jine span:last-child{
+	color: red;
+}
+.main .order .item .proname span:last-child,.main .order .item .time span:last-child{
+	font-weight: 200;
+}
+

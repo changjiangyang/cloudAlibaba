@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.form.mapper.FormAssemblyMapper">
+    <select id="getAll" resultType="com.hltx.beans.FormAssembly">
+        select id,name,icon from form_assembly
+    </select>
+    
+    <insert id="addFormassembly" parameterType="com.hltx.beans.FormAssembly">
+        insert into form_assembly (id,name,icon) values (#{formAssembly.id},#{formAssembly.name},#{formAssembly.icon})
+    </insert>
+
+    <delete id="deleteFormassembly" parameterType="java.lang.String">
+        delete from form_assembly where id = #{id}
+    </delete>
+</mapper>

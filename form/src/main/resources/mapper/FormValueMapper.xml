@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.form.mapper.FormValueMapper">
+    <select id="getFormvalueBymodelID" resultType="java.util.Map">
+        select id,filluserid,filusername,filltime,fillcontent,modelid from form_value
+        where modelid = #{mid}
+        order by filltime desc
+        limit #{index},#{pagesize}
+    </select>
+    
+    <insert id="addvalue" parameterType="com.hltx.beans.FormValue">
+        insert into form_value (id,filluserid,filusername,filltime,fillcontent,modelid,fillphone)
+        values (#{formValue.id},#{formValue.filluserid},#{formValue.filusername},now(),
+        #{formValue.fillcontent},#{formValue.modelid},#{formValue.fillphone})
+    </insert>
+
+    <select id="getFormvalueByuserID" resultType="java.util.Map">
+        select id,filluserid,filusername,filltime,fillcontent,modelid from form_value
+        where filluserid = #{uid}
+        order by filltime desc
+        limit #{index},#{pagesize}
+    </select>
+
+   <select id="getByid" resultType="com.hltx.beans.FormValue">
+       select id,filluserid,filusername,filltime,fillcontent,modelid from form_value
+       where id = #{id}
+   </select>
+
+    <select id="getCountByPhoneAndMoel" resultType="java.lang.Integer">
+        slect count(id) from form_value where modelid = #{mid} and phone= #{phone}
+    </select>
+</mapper>

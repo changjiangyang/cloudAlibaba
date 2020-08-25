@@ -1,0 +1,3 @@
+# Project exclude paths
+/beans/target/
+/tool/target/

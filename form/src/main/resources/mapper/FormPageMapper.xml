@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hltx.form.mapper.FormPageMapper">
+    <select id="getByPage" resultType="java.util.Map">
+        select id,companyid,parid,createtime,createuser,columns,name,title,updateTime,status from form_page
+        where 1=1
+        <if test="companyid != null">
+         and companyid = #{companyid}
+        </if>
+        <if test="key != null">
+            and name like concat('%','${key}','%')
+        </if>
+        order by createtime desc
+        limit #{index},#{pagesize}
+    </select>
+    
+    <insert id="insertFormPage" parameterType="com.hltx.beans.FormPage">
+        insert into form_page (id,companyid,parid,createtime,createuser,columns,name,title,updateTime,status)
+        values (#{formPage.id},#{formPage.companyid},#{formPage.parid},now(),#{formPage.createuser},#{formPage.columns}
+        ,#{formPage.name},#{formPage.title},#{formPage.updateTime},#{formPage.status})
+    </insert>
+
+    <delete id="deleteFormPage" parameterType="java.lang.String">
+        delete from form_page where id = #{id}
+    </delete>
+
+    <select id="getCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(id) from form_page where 1=1
+        <if test="key != null">
+            and name like concat('%','${key}','%')
+        </if>
+        <if test="companyid != null">
+          and  companyid = #{companyid}
+        </if>
+    </select>
+
+    <update id="updateFormStatus">
+        update form_page set
+        columns = #{columns},
+        name = #{name},
+        title = #{title},
+        updatetime =  now()
+        where id = #{id}
+    </update>
+
+    <update id="fabu" parameterType="java.lang.String">
+        update form_page set
+        status = 2
+        where id= #{id}
+    </update>
+
+    <select id="getByid" parameterType="java.lang.String" resultType="com.hltx.beans.FormPage">
+        select id,companyid,parid,createtime,createuser,columns,name,title,updateTime,status from form_page
+        where id =#{id}
+    </select>
+
+    <select id="getByCompany" resultType="com.hltx.beans.FormPage" >
+        select id,companyid,parid,createtime,createuser,columns,name,title,updateTime,status from form_page
+        where 1=1
+        <if test="id != null">
+            and companyid = #{companyid}
+        </if>
+        <if test="key != null">
+            and name like concat('%','${key}','%')
+        </if>
+        order by createtime desc
+    </select>
+</mapper>

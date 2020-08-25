@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 微软雅黑;
+}
+
+header {
+	height: 60px;
+	line-height: 60px;
+	width: 100%;
+	color: #fff;
+	font-family: "黑体";
+	font-weight: 200;
+	font-size: 20px;
+	/*背景色渐变*/
+	background: linear-gradient(to bottom right, #F56739, #FB9749);
+}
+
+.menu {
+	display: block;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	color: #474747;
+	padding-top: 10px;
+	border-top: 1px solid #eee;
+	background-color: #fff;
+}
+
+.subMenu {
+	width: 25%;
+	float: left;
+	cursor: pointer;
+}
+
+.menu_name {
+	height: 30px;
+	width: 100%;
+	line-height: 30px;
+}
+
+img.menu_img {
+	height: 24px;
+	width: 24px;
+}
+
+img {
+	vertical-align: middle;
+	border: 0;
+}
+
+.active {
+	color: #FFA129;
+}
+
+.text-center {
+	text-align: center
+}
+.hidden{
+	height: 24rem;
+	width: 96%;
+	position: fixed;
+	top: 7rem;
+	margin: 2%;
+	z-index: 2;
+	display: none;
+}
+.hidden .time{
+	float: left;
+	margin-left: 1rem;
+	color: white;
+}
+.top{
+	background: darkorange;
+	width: 100%;
+	height: 6rem;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px
+}
+.top img{
+	width: 5rem;
+    height: 5rem;
+    float: right;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+.bottom{
+	height: 18rem;
+	background: #FFFFFF;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.bottom p{
+	margin: 0;
+    padding: 1rem 0.2rem 1rem 0.2rem;
+    font-size: 1.45rem;
+}
+
+.bottom p :last-child{
+	font-size: 1.2rem;
+    border: 1px solid #FF8C00;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    float: right;
+}
+.bottom div{
+	text-align: center;
+}
+.bottom img{
+	margin: 1rem;
+}
+.dol{
+	width: 100vh;
+	height: 100%;
+	position: fixed;
+	background: #444444;
+	top: 0;
+	z-index: 1;
+	opacity: 0.8;
+	display: none;
+}
+
+
+

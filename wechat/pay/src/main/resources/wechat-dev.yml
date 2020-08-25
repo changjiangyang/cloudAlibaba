@@ -1,0 +1,52 @@
+server:
+  port: 8103
+Spring:
+  application:
+    name: wechat-pay
+  mail:
+    host: smtp.qq.com
+    username: happyjava@foxmail.com
+    password: xxxxxxxx
+    protocol: smtp
+    default-encoding: UTF-8
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+rocketmq:
+  producer:
+    group: producer_bank2
+  name-server: 127.0.0.1:9876
+wechat:
+  pay:
+    appid: 9999
+    # 服务商商户的APPID
+    mchID: 123123
+    # 微信支付分配的商户号
+    sub_appid: 123123
+    #微信分配的子商户公众账号ID 如需在支付完成后获取sub_openid则此参数必传。
+    sub_mch_id: 111111
+    # 微信支付分配的子商户号
+    account-divided: false
+    # 开启分账
+    certPath: pppp
+    # 支付证书路径
+    certKey:  kkkkkkkkkkkkkkk
+    # 证书密匙
+    connectTimeOut: 8000
+    readTimeout: 10000
+  rocket:
+    topicname: test-topic
+    # 发送短信
+    shortmessage: false
+    # 发送email
+    email: false
+    # 发送模板消息
+    templatemessage: false
+
+
+
+
+
